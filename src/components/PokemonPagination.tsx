@@ -121,36 +121,38 @@ function PokemonPagination({ initialLimit = 1 }: PokemonPaginationProps) {
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {pokemons.map((pokemon) => (
-              <Card
-                key={pokemon.id}
-                className="overflow-hidden hover:shadow-lg transition-shadow duration-300"
-              >
-                <CardContent className="p-4">
-                  <div className="relative">
-                    <img
-                      className="w-full h-48 object-contain"
-                      src={pokemon.sprite}
-                      alt={pokemon.name}
-                    />
-                    <span className="absolute top-0 right-0 bg-primary text-white text-xs font-bold rounded-bl-lg px-2 py-1">
-                      #{pokemon.id.toString().padStart(3, "0")}
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-semibold mt-2 text-center capitalize">
-                    {pokemon.name}
-                  </h3>
-                  <div className="flex justify-center mt-2 gap-2">
-                    {pokemon.types.map((type) => (
-                      <span
-                        key={type}
-                        className={`${getTypeColor(type)} text-white text-xs font-bold px-2 py-1 rounded`}
-                      >
-                        {type}
+              <a href={`/pokemon/${pokemon.id}`}>
+                <Card
+                  key={pokemon.id}
+                  className="overflow-hidden hover:shadow-lg transition-shadow duration-300"
+                >
+                  <CardContent className="p-4">
+                    <div className="relative">
+                      <img
+                        className="w-full h-48 object-contain"
+                        src={pokemon.sprite}
+                        alt={pokemon.name}
+                      />
+                      <span className="absolute top-0 right-0 bg-primary text-white text-xs font-bold rounded-bl-lg px-2 py-1">
+                        #{pokemon.id.toString().padStart(3, "0")}
                       </span>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+                    </div>
+                    <h3 className="text-lg font-semibold mt-2 text-center capitalize">
+                      {pokemon.name}
+                    </h3>
+                    <div className="flex justify-center mt-2 gap-2">
+                      {pokemon.types.map((type) => (
+                        <span
+                          key={type}
+                          className={`${getTypeColor(type)} text-white text-xs font-bold px-2 py-1 rounded`}
+                        >
+                          {type}
+                        </span>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </a>
             ))}
           </div>
           <div className="flex justify-center items-center mt-8 gap-4">
